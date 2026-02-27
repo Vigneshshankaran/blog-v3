@@ -1,0 +1,105 @@
+:root {
+  --color-primary: #0f172a;
+  --color-secondary: #1e293b;
+  --color-body: #334155;
+  --color-muted: #475569;
+  --color-subtle: #64748b;
+  --color-lighter: #94a3b8;
+  --color-border: #e2e8f0;
+  --color-bg-light: #f1f5f9;
+  --color-bg-lighter: #f8fafc;
+  --color-surface: #ffffff;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --radius-md: 12px;
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Meridian CTA Section */
+.meridian-cta {
+  background: var(--color-bg-lighter);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 60px 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.meridian-cta__content {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.meridian-cta__content h3 {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.meridian-cta__content p {
+  font-size: 18px;
+  color: var(--color-subtle);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.meridian-cta__form {
+  display: flex;
+  justify-content: center;
+  height: 56px;
+}
+
+.meridian-cta__button {
+  padding: 0 40px;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+  transition: var(--transition);
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meridian-cta__button:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+@media (max-width: 768px) {
+  .meridian-cta {
+    padding: 64px 24px;
+  }
+  .meridian-cta__form {
+    height: auto;
+  }
+  .meridian-cta__button {
+    width: 100%;
+    height: 56px;
+  }
+}

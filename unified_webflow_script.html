@@ -1,0 +1,88 @@
+<script>
+  /**
+   * MERIDIAN ELITE: Isolated Webflow TOC Script
+   * This script handles auto-generation of TOC links from H2 headings
+   * and syncs the active state based on scroll position.
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+    // --- 1. Auto-generate TOC Links (H2 Only) ---
+    const contentWrapper = document.querySelector(".text-rich-text.w-richtext");
+    const tocContainer = document.querySelector(".toc-component");
+
+    if (contentWrapper && tocContainer) {
+      const headings = contentWrapper.querySelectorAll("h2");
+      headings.forEach((heading, index) => {
+        // Create slug if no ID exists
+        if (!heading.id) {
+          const slug = heading.textContent
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+          heading.id = slug || `heading-${index}`;
+        }
+
+        // Create TOC link
+        const link = document.createElement("a");
+        link.href = `#${heading.id}`;
+        link.className = "w-inline-block toc-link-item";
+        link.textContent = heading.textContent;
+        link.style.display = "block";
+        tocContainer.appendChild(link);
+      });
+    }
+
+    // --- 2. TOC Scroll Observer ---
+    const tocLinks = document.querySelectorAll('.toc-component a[href^="#"]');
+    const observedHeadings = document.querySelectorAll(
+      ".text-rich-text.w-richtext h2[id]",
+    );
+
+    const tocObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            // Clear all active states
+            tocLinks.forEach((l) => l.classList.remove("active"));
+
+            // Match current heading to link
+            const activeLink = document.querySelector(
+              `.toc-component a[href="#${e.target.id}"]`,
+            );
+            if (activeLink) activeLink.classList.add("active");
+          }
+        });
+      },
+      {
+        rootMargin: "-80px 0px -60% 0px", // Trigger slightly before heading hits top
+      },
+    );
+
+    observedHeadings.forEach((h) => tocObserver.observe(h));
+
+    // --- 3. TOC Custom Styles ---
+    const styles = document.createElement("style");
+    styles.textContent = `
+    .toc-component a.active {
+      color: #2563eb !important; /* Meridian Cobalt */
+      border-left: 2px solid #2563eb;
+      padding-left: 10px;
+      font-weight: 500;
+    }
+    .toc-link-item {
+      padding: 8px 0 8px 12px;
+      text-decoration: none;
+      color: #64748b;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border-left: 2px solid transparent;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .toc-link-item:hover { 
+      color: #0f172a; 
+    }
+  `;
+    document.head.appendChild(styles);
+  });
+</script>
