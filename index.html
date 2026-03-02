@@ -31,7 +31,7 @@
         --color-bg-light: #f1f5f9;
         --color-bg-lighter: #f8fafc;
         --color-surface: #ffffff;
-        --color-accent: #2563eb;
+        --color-accent: #5f46ff;
         --color-accent-hover: #1d4ed8;
         --font-sans: "Zalando Sans";
         --font-heading: "Playfair Display";
@@ -830,79 +830,6 @@
         color: var(--color-body);
       }
 
-      /* Ultra-Compact Digital Utility Padding */
-      .rt-cta-box {
-        background: #f8fafc;
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        margin: 4.6875rem 0 0 0;
-        font-family: var(--font-sans) !important;
-      }
-      .rt-cta-header {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-      .rt-cta-title-group {
-        flex: 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .rt-cta-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin: 0;
-        color: var(--color-primary);
-        letter-spacing: -0.02em;
-        line-height: 1.2;
-      }
-      .rt-cta-trigger {
-        width: 28px;
-        height: 28px;
-        background: #fff;
-        border: 1px solid var(--color-border);
-        border-radius: 50%;
-        color: var(--color-accent);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        margin-left: 12px;
-      }
-      .rt-cta-trigger svg {
-        transition: 0s;
-      }
-      .rt-cta-trigger.is-open {
-        background: var(--color-accent);
-        color: #fff;
-        border-color: var(--color-accent);
-      }
-      .rt-cta-trigger.is-open svg {
-        transform: rotate(180deg);
-      }
-      .rt-cta-content {
-        display: none;
-        margin-top: 0.75rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid var(--color-border);
-      }
-      .rt-cta-content.is-open {
-        display: block;
-      }
-      .rt-cta-benefits {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 1rem 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px 16px;
-      }
-      @media (max-width: 479px) {
-        .rt-cta-benefits { grid-template-columns: 1fr; gap: 6px; }
-      }
       .rt-cta-benefit-item {
         display: flex;
         align-items: center;
@@ -910,6 +837,124 @@
         font-size: 14px;
         color: var(--color-muted);
         font-weight: 500;
+      }
+
+      /* Refined Card-Style CTA (Reference Match) */
+      .rt-cta-box {
+        background: transparent;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 2.5rem 0;
+        font-family: var(--font-sans) !important;
+      }
+      .rt-cta-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+      }
+      .rt-cta-title h4{
+        font-size: 18px !important;
+      }
+      .rt-cta-title {
+        font-size: 18px !important;
+        font-weight: 500;
+        color: #0d0a40;
+        margin: 0;
+        letter-spacing: -0.01em;
+      }
+      .rt-cta-trigger {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 1px solid #eef0f5;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #5f46ff;
+        transition: all 0.2s ease;
+      }
+      .rt-cta-box.is-open .rt-cta-trigger {
+        background: #5f46ff;
+        color: #ffffff;
+        border-color: #5f46ff;
+      }
+      .rt-cta-trigger svg {
+        transition: transform 0.2s ease;
+      }
+      .rt-cta-box.is-open .rt-cta-trigger svg {
+        transform: rotate(180deg);
+      }
+      .rt-cta-content {
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: 0s;
+      }
+      .rt-cta-box.is-open .rt-cta-content {
+        height: auto;
+        opacity: 1;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #f1f5f9;
+        transition: opacity 0.3s ease;
+      }
+      .rt-cta-description {
+        font-size: 15px;
+        line-height: 1.5;
+        color: #64748b;
+        margin-bottom: 16px;
+        max-width: 600px;
+      }
+      .rt-cta-button {
+        display: inline-block;
+        background: #5f46ff !important;
+        color: #ffffff !important;
+        padding: 12px 24px !important;
+        border-radius: 8px !important;
+        text-decoration: none !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        border: none !important;
+        transition: background 0.2s ease !important;
+      }
+      .rt-cta-button:hover {
+        background: #1d4ed8 !important;
+      }
+      
+      /* Universal Button Icon Styles */
+      .button-content-hero-section-8 {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        width: 100%;
+      }
+      .button-icon-hero-section {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .button-icon-normal.normal {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+      .button-text {
+        margin: 0 !important;
+        font-size: 16px !important;
+        color: #ffffff !important;
+      }
+      .button-text.hero-btn-txt.nav-btn-text {
+        color: #fff !important;
+        font-size: 0.786875rem !important;
+        line-height: 1.5rem !important;
+      }
+      @media (max-width: 580px) {
+        .rt-cta-title { font-size: 18px; padding-right: 12px; }
       }
 
       /* High-Impact Full-Height Testimonial */
@@ -989,8 +1034,8 @@
         padding: 12px 28px !important;
         border-radius: 8px !important;
         text-decoration: none !important;
-        font-size: 14px !important;
-        font-weight: 600 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
         border: 1px solid var(--color-accent) !important;
       }
       .rt-cta-button:hover {
@@ -1144,6 +1189,13 @@
         color: var(--color-primary);
         margin-top: 2.5em;
         margin-bottom: 0.8em;
+      }
+      .text-rich-text.w-richtext h4 {
+        color: #0d0a40;
+        margin-top: 1rem;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+        font-size: 1rem;
       }
       .text-rich-text.w-richtext p {
         margin-bottom: var(--space-3);
@@ -1409,7 +1461,7 @@
         border: none;
         border-radius: var(--radius-sm);
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 500;
         cursor: pointer;
         transition: var(--transition);
         margin-top: 8px;
@@ -1779,7 +1831,7 @@
         }
         .newsletter-form input:focus {
           background: white !important;
-          border-color: #2563eb !important;
+          border-color: #5f46ff !important;
           box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1) !important;
           outline: none;
         }
@@ -1787,9 +1839,9 @@
           width: 100% !important;
           height: auto !important;
           border-radius: 12px !important;
-          background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+          background: linear-gradient(135deg, #5f46ff, #1d4ed8) !important;
           color: white !important;
-          font-weight: 600 !important;
+          font-weight: 500 !important;
           font-size: 15px !important;
           margin-top: 4px !important;
           box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2) !important;
@@ -1832,16 +1884,16 @@
       }
 
       .meridian-cta__content {
-        max-width: 520px;
+        max-width: 800px;
         margin: 0 auto;
       }
 
       .meridian-cta__content h3 {
-        font-size: clamp(28px, 4vw, 28px);
+        font-size: 48px;
         font-weight: 500;
         color: var(--color-primary);
         letter-spacing: -0.04em;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         line-height: 1.1;
       }
 
@@ -1864,8 +1916,8 @@
         color: white;
         border: none;
         border-radius: var(--radius-sm);
-        font-size: 16px;
-        font-weight: 700;
+        font-size: 15px;
+        font-weight: 500;
         cursor: pointer;
         white-space: nowrap;
         transition: var(--transition);
@@ -2558,7 +2610,14 @@
                 aria-label="you@company.com"
                 required
               />
-              <button type="submit">Subscribe</button>
+              <button type="submit">
+                <div class="button-content-hero-section-8">
+                  <p class="button-text">Subscribe</p>
+                  <div class="button-icon-hero-section">
+                    <img loading="lazy" src="images/SVG-1.svg" alt="Button Icon" class="button-icon-normal normal">
+                  </div>
+                </div>
+              </button>
             </form>
             <p class="newsletter-disclaimer">No spam. Unsubscribe anytime.</p>
           </div>
@@ -2852,35 +2911,25 @@
               company’s journey.
             </p>
 
-            <div class="rt-cta-box" style="margin: 3rem 0 4rem 0 !important;">
-              <div class="rt-cta-header" id="advisoryCtaHeader">
-                <div class="rt-cta-title-group">
-                  <h4 class="rt-cta-title">Compliant & Strategic ESOP Advisory</h4>
-                  <button class="rt-cta-trigger" id="advisoryCtaTrigger" aria-label="Toggle details">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                  </button>
+            <div class="rt-cta-box" id="ctaBox">
+              <div class="rt-cta-header" onclick="document.getElementById('ctaBox').classList.toggle('is-open')">
+                <h4 class="rt-cta-title">Check out our guide to Equity Management Softwares 2026</h4>
+                <div class="rt-cta-trigger">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
               </div>
-              <div class="rt-cta-content" id="advisoryCtaContent">
-                <ul class="rt-cta-benefits">
-                  <li class="rt-cta-benefit-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Custom Scheme Design
-                  </li>
-                  <li class="rt-cta-benefit-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Legal & Tax Compliance
-                  </li>
-                  <li class="rt-cta-benefit-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Dilution Modeling
-                  </li>
-                  <li class="rt-cta-benefit-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Onboarding in 24h
-                  </li>
-                </ul>
-                <a href="https://www.equitylist.co/esop-advisory" class="rt-cta-button">Get Started</a>
+              <div class="rt-cta-content">
+                <p class="rt-cta-description">
+                  We've done a deep research of all the best equity management software on planet earth and we think these make the cut. EquityList is obviously number one.
+                </p>
+                <a href="https://www.equitylist.co/esop-advisory" class="rt-cta-button">
+                  <div class="button-content-hero-section-8">
+                    <p class="button-text">Read More</p>
+                    <div class="button-icon-hero-section">
+                      <img loading="lazy" src="images/SVG-1.svg" alt="Button Icon" class="button-icon-normal normal">
+                    </div>
+                  </div>
+                </a>
               </div>
             </div>
 
@@ -2922,7 +2971,14 @@
                     aria-label="Email address"
                     required
                   />
-                  <button type="submit">Subscribe</button>
+                  <button type="submit">
+                    <div class="button-content-hero-section-8">
+                      <p class="button-text">Subscribe</p>
+                      <div class="button-icon-hero-section">
+                        <img loading="lazy" src="images/SVG-1.svg" alt="Button Icon" class="button-icon-normal normal">
+                      </div>
+                    </div>
+                  </button>
                 </form>
                 <p class="newsletter-disclaimer">No spam. Unsubscribe anytime.</p>
               </div>
@@ -3003,7 +3059,14 @@
           Swift data migration & onboarding within 24 hours.
         </p>
         <form class="meridian-cta__form" onsubmit="return false;">
-          <button type="submit" class="meridian-cta__button">Get Started</button>
+          <button type="submit" class="meridian-cta__button">
+            <div class="button-content-hero-section-8">
+              <p class="button-text">Get Started</p>
+              <div class="button-icon-hero-section">
+                <img loading="lazy" src="images/SVG-1.svg" alt="Button Icon" class="button-icon-normal normal">
+              </div>
+            </div>
+          </button>
         </form>
       </div>
     </section>
@@ -3354,8 +3417,8 @@ Side Letter Guide: Meaning, Use Cases, Legal Validity, and Common Clauses
         const styles = document.createElement("style");
         styles.textContent = `
     .toc-component a.active {
-      color: #2563eb !important; /* Meridian Cobalt */
-      border-left: 2px solid #2563eb;
+      color: #5f46ff !important; /* Meridian Cobalt */
+      border-left: 2px solid #5f46ff;
       padding-left: 10px;
       font-weight: 500;
     }
@@ -3459,12 +3522,17 @@ Side Letter Guide: Meaning, Use Cases, Legal Validity, and Common Clauses
                         type="email"
                         id="Footer-Email-Two-2"
                         required=""
-                      /><input
+                      /><button
                         type="submit"
-                        data-wait="hi@compay.com"
                         class="button-primary-2 footer-form-button w-button"
-                        value="Subscribe"
-                      />
+                      >
+                        <div class="button-content-hero-section-8">
+                          <p class="button-text">Subscribe</p>
+                          <div class="button-icon-hero-section">
+                            <img loading="lazy" src="images/SVG-1.svg" alt="Button Icon" class="button-icon-normal normal">
+                          </div>
+                        </div>
+                      </button>
                     </div>
                   </form>
                   <div class="w-form-done">
