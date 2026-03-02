@@ -59,9 +59,9 @@
         --radius-lg: 32px;
         --shadow-subtle: 0 4px 20px -5px rgba(15, 23, 42, 0.05);
         --shadow-elite: 0 30px 60px -12px rgba(15, 23, 42, 0.12);
-        --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        --glass-bg: rgba(255, 255, 255, 0.75);
-        --glass-border: rgba(255, 255, 255, 0.4);
+        --transition: 0s;
+        --glass-bg: #fff;
+        --glass-border: #e2e8f0;
 
         --syntax-bg: #0f172a;
         --syntax-text: #e2e8f0;
@@ -71,43 +71,8 @@
         --syntax-fn: #fbbf24;
       }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes meshGradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
       .animate-reveal {
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        opacity: 0;
+        opacity: 1;
       }
       *,
       *::before,
@@ -734,32 +699,36 @@
         margin-bottom: 0.75rem;
         padding-left: 0.5rem;
       }
-      .rich-text blockquote {
-        border-left: none;
-        padding: var(--space-6) var(--space-10);
-        margin: var(--space-10) calc(var(--space-6) * -1);
-        background: white;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-elite);
+      .rich-text blockquote,
+      .w-richtext blockquote {
+        border-left: 3px solid var(--color-accent);
+        padding: 1.5rem 2rem;
+        margin: 3rem 0;
+        background: #fff;
+        border-radius: 0 8px 8px 0;
         position: relative;
       }
-      .rich-text blockquote p {
-        font-size: var(--font-size-h3);
-        line-height: 1.4;
+      .rich-text blockquote p,
+      .w-richtext blockquote p {
+        font-family: var(--font-sans) !important;
+        font-size: 1.25rem;
+        line-height: 1.6;
         font-weight: 500;
         color: var(--color-primary);
-        font-style: italic;
-        margin: 0;
+        font-style: normal;
+        margin-bottom: 0;
       }
-      .rich-text blockquote::before {
-        content: "“";
-        position: absolute;
-        top: 20px;
-        left: 30px;
-        font-size: 100px;
-        color: var(--color-accent);
-        opacity: 0.15;
-        font-family: var(--font-heading);
+      .rich-text blockquote cite,
+      .w-richtext blockquote cite {
+        display: block;
+        margin-top: 1rem;
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        color: var(--color-subtle);
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
       }
       .rich-text code {
         font-size: 0.85em;
@@ -823,7 +792,14 @@
       .rich-text pre:hover .copy-btn {
         opacity: 1;
       }
-      .rich-text table {
+      .table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin: var(--space-6) 0;
+        -webkit-overflow-scrolling: touch;
+      }
+      .rich-text table,
+      .w-richtext table {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
@@ -835,7 +811,8 @@
         border: 1px solid var(--color-border);
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       }
-      .rich-text th {
+      .rich-text th,
+      .w-richtext th {
         background: #f8fafc;
         text-align: left;
         padding: var(--space-2) var(--space-3);
@@ -846,10 +823,110 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
-      .rich-text td {
+      .rich-text td,
+      .w-richtext td {
         padding: var(--space-2) var(--space-3);
         border-bottom: 1px solid var(--color-border);
         color: var(--color-body);
+      }
+
+      /* Ultra-Compact Digital Utility Padding */
+      .rt-cta-box {
+        background: #f8fafc;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        margin: 4.6875rem 0 0 0;
+        font-family: var(--font-sans) !important;
+      }
+      .rt-cta-header {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+      .rt-cta-title-group {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .rt-cta-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+        color: var(--color-primary);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .rt-cta-trigger {
+        width: 28px;
+        height: 28px;
+        background: #fff;
+        border: 1px solid var(--color-border);
+        border-radius: 50%;
+        color: var(--color-accent);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-left: 12px;
+      }
+      .rt-cta-trigger svg {
+        transition: 0s;
+      }
+      .rt-cta-trigger.is-open {
+        background: var(--color-accent);
+        color: #fff;
+        border-color: var(--color-accent);
+      }
+      .rt-cta-trigger.is-open svg {
+        transform: rotate(180deg);
+      }
+      .rt-cta-content {
+        display: none;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--color-border);
+      }
+      .rt-cta-content.is-open {
+        display: block;
+      }
+      .rt-cta-benefits {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 16px;
+      }
+      @media (max-width: 479px) {
+        .rt-cta-benefits { grid-template-columns: 1fr; gap: 6px; }
+      }
+      .rt-cta-benefit-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--color-muted);
+        font-weight: 500;
+      }
+      .rt-cta-button {
+        display: inline-block;
+        background: var(--color-accent) !important;
+        color: #ffffff !important;
+        padding: 12px 28px !important;
+        border-radius: 8px !important;
+        text-decoration: none !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        border: 1px solid var(--color-accent) !important;
+      }
+      .rt-cta-button:hover {
+        background: var(--color-accent-hover) !important;
+        border-color: var(--color-accent-hover) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
       }
       .rich-text tr:hover td {
         background: #fcfdfe;
@@ -2562,6 +2639,10 @@
             <h2 id="moving-beyond-boilerplate-templates">
               Moving beyond boilerplate templates
             </h2>
+            <blockquote>
+              <p>Tailored solutions should align with growth, culture, and stage — not just a static pool or a boilerplate scheme.</p>
+              <cite>EquityList Strategy Team</cite>
+            </blockquote>
             <p>
               Companies expect a tailored solution that aligns with their
               growth, culture, and stage - not just a static pool or a
@@ -2579,26 +2660,32 @@
               benchmarking, and compliance - all seamlessly integrated into your
               existing workflows.
             </p>
-            <ul role="list">
-              <li>
-                <strong>Every plan is custom-built:</strong> No copy-paste, no
-                shortcuts.
-              </li>
-              <li>
-                <strong>Platform-backed insights:</strong> With EquityList as
-                the backbone, you get a vantage point from hundreds of evolving
-                cap tables and share-based programs, so your plan is informed by
-                what works.
-              </li>
-              <li>
-                <strong>Legal experts, not bots:</strong> to walk you through
-                compliance, best practices, and board/shareholder approvals.
-              </li>
-              <li>
-                <strong>Built-in flexibility:</strong> from performance-based
-                vesting to extended exercise periods for key hires.
-              </li>
             </ul>
+
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Advisory Pillar</th>
+                    <th>Expert Insight</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Strategy & Design</strong></td>
+                    <td>
+                      ESOPs are not just a compensation tool; they are a strategic alignment engine that turns employees into owners from day one.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Compliance</strong></td>
+                    <td>
+                      Tailored scheme documents that evolve with your cap table, ensuring you stay ahead of regulatory shifts in multiple jurisdictions.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <h2 id="turning-equity-challenges-into-growth-opportunities">
               Turning equity challenges into growth opportunities
             </h2>
@@ -2631,6 +2718,39 @@
               a one-time investment for at least the next 3-4 years of your
               company’s journey.
             </p>
+
+            <div class="rt-cta-box" style="margin: 3rem 0 4rem 0 !important;">
+              <div class="rt-cta-header" id="advisoryCtaHeader">
+                <div class="rt-cta-title-group">
+                  <h4 class="rt-cta-title">Compliant & Strategic ESOP Advisory</h4>
+                  <button class="rt-cta-trigger" id="advisoryCtaTrigger" aria-label="Toggle details">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="rt-cta-content" id="advisoryCtaContent">
+                <ul class="rt-cta-benefits">
+                  <li class="rt-cta-benefit-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Custom Scheme Design
+                  </li>
+                  <li class="rt-cta-benefit-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Legal & Tax Compliance
+                  </li>
+                  <li class="rt-cta-benefit-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Dilution Modeling
+                  </li>
+                  <li class="rt-cta-benefit-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Onboarding in 24h
+                  </li>
+                </ul>
+                <a href="https://www.equitylist.co/esop-advisory" class="rt-cta-button">Get Started</a>
+              </div>
+            </div>
+
             <h2 id="equitylist-now-a-full-stack-equity-platform">
               EquityList: Now a full-stack equity platform
             </h2>
@@ -2967,41 +3087,6 @@ Side Letter Guide: Meaning, Use Cases, Legal Validity, and Common Clauses
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // Scroll reveal observer
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("reveal-active");
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-      );
-
-      document
-        .querySelectorAll(
-          ".text-rich-text p, .text-rich-text h2, .text-rich-text h3, .text-rich-text blockquote, .text-rich-text table, .text-rich-text pre, .keytakeaways_rich-text p, .keytakeaways_rich-text li, .sources-section, .newsletter-area-2",
-        )
-        .forEach((el) => {
-          el.style.opacity = "0";
-          el.style.transform = "translateY(20px)";
-          el.style.transition =
-            "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
-          el.classList.add("reveal-item");
-          revealObserver.observe(el);
-        });
-
-      // Simple CSS for reveal
-      const style = document.createElement("style");
-      style.textContent = `
-        .reveal-active {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-      `;
-      document.head.appendChild(style);
       // Reading Time Opacity
       const readingTimeMeta = document.getElementById("reading-time-meta");
       if (readingTimeMeta) {
@@ -3179,6 +3264,18 @@ Side Letter Guide: Meaning, Use Cases, Legal Validity, and Common Clauses
                 copyTooltip.classList.remove("show");
               }, 2000);
             });
+          });
+        }
+
+        // Professional Expandable CTA Toggle
+        const rtCtaHeader = document.getElementById('advisoryCtaHeader');
+        const rtCtaContent = document.getElementById('advisoryCtaContent');
+        const rtCtaTrigger = document.getElementById('advisoryCtaTrigger');
+
+        if (rtCtaHeader && rtCtaContent && rtCtaTrigger) {
+          rtCtaHeader.addEventListener('click', () => {
+            rtCtaContent.classList.toggle('is-open');
+            rtCtaTrigger.classList.toggle('is-open');
           });
         }
       });
