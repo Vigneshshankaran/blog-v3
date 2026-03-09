@@ -29,7 +29,7 @@
         --color-lighter: #94a3b8;
         --color-border: #e2e8f0;
         --color-bg-light: #f1f5f9;
-        --color-bg-lighter: #f8fafc;
+        --color-bg-lighter: #ffffff;
         --color-surface: #ffffff;
         --color-accent: #5f46ff;
         --color-accent-hover: #1d4ed8;
@@ -119,9 +119,16 @@
         font-weight: 400;
       }
 
-      h1, h2, h3, h4, h5, h6,
-      h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
+      h1, h1 * {
         font-family: var(--font-heading) !important;
+        letter-spacing: -0.03em;
+        font-weight: 500 !important;
+        line-height: 1.15;
+      }
+
+      h2, h3, h4, h5, h6,
+      h2 *, h3 *, h4 *, h5 *, h6 * {
+        font-family: var(--font-sans) !important;
         letter-spacing: -0.03em;
         font-weight: 500 !important;
         line-height: 1.15;
@@ -1086,7 +1093,7 @@
       .keytakeaways_component {
         display: flex !important;
         flex-direction: column;
-        background: #f8fafc;
+        background: #ffffff;
         border-radius: 16px;
         padding: 40px;
         margin-bottom: 64px;
