@@ -251,7 +251,7 @@
       /* Premium Mesh Hero */
       .hero {
         padding: 140px 0 48px;
-        background: rgba(246, 245, 254, 1);
+        background: #ffffff
         position: relative;
         /* Removed overflow: hidden to allow dropdowns */
         border-bottom: 1px solid var(--color-border);
@@ -263,33 +263,8 @@
         z-index: 0;
         pointer-events: none;
       }
-      .hero-bg::before {
-        content: "";
-        position: absolute;
-        width: 150%;
-        height: 150%;
-        top: -25%;
-        left: -25%;
-        background: 
-          radial-gradient(circle at 20% 30%, #f1f5f9 0%, transparent 40%),
-          radial-gradient(circle at 80% 20%, #eff6ff 0%, transparent 40%),
-          radial-gradient(circle at 40% 80%, #f8fafc 0%, transparent 40%),
-          radial-gradient(circle at 70% 70%, #f0f9ff 0%, transparent 40%);
-        filter: blur(80px);
-      }
-      .site-nav-accent {
-        position: absolute;
-        top: -250px;
-        right: -250px;
-        width: 800px;
-        height: 800px;
-        background: linear-gradient(180deg, rgba(226, 228, 249, 0.7) 0%, rgba(66, 83, 231, 0.7) 100%);
-        filter: blur(140px);
-        opacity: 0.5;
-        z-index: 0;
-        pointer-events: none;
-        border-radius: 50%;
-      }
+
+
       .hero > .container {
         position: relative;
         z-index: 1;
