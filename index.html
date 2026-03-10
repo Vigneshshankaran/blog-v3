@@ -251,7 +251,7 @@
       /* Premium Mesh Hero */
       .hero {
         padding: 140px 0 48px;
-        background: #ffffff
+        background: #ffffff;
         position: relative;
         /* Removed overflow: hidden to allow dropdowns */
         border-bottom: 1px solid var(--color-border);
@@ -370,6 +370,7 @@
       .author-role {
         font-size: 13px;
         color: var(--color-subtle);
+        margin-top: 2px;
       }
       .meta-divider {
         width: 1px;
@@ -1733,6 +1734,9 @@
         }
       }
       @media (max-width: 768px) {
+        .hero {
+          padding: 80px 0 40px !important;
+        }
         .hero-inner {
           grid-template-columns: 1fr;
           gap: 32px !important;
@@ -1744,14 +1748,48 @@
         }
         .author-meta {
           flex-wrap: wrap !important;
-          gap: 12px !important;
-          padding-top: 24px !important;
+          gap: 20px 24px !important;
+          padding: 32px 0 !important;
+          border-top: 1px solid var(--color-border);
+          justify-content: flex-start !important;
+          align-items: center;
+          text-align: left;
+        }
+        .author-avatar {
+          width: 44px !important;
+          height: 44px !important;
         }
         .meta-divider {
           display: none !important;
         }
         .meta-item {
-          white-space: normal !important;
+          white-space: nowrap !important;
+          font-size: 13px !important;
+          justify-content: flex-start;
+        }
+        .site-nav {
+          background: white !important;
+          border-bottom: 1px solid var(--color-border) !important;
+        }
+        .navigation-container-4 {
+          padding: 0 16px !important;
+          height: 64px !important;
+        }
+        .navigation-right-3 {
+          gap: 12px !important;
+        }
+        .link-block-11 {
+          display: none !important;
+        }
+        .global-logo {
+          height: 32px !important; /* Restored size for visibility */
+          width: auto !important;
+        }
+        .nav-button {
+          padding: 8px 14px !important;
+        }
+        .nav-btn-text {
+          font-size: 13px !important;
         }
         .sidebar {
           position: static !important;
