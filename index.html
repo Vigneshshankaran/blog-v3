@@ -21,14 +21,14 @@
     </style>
     <style>
       :root {
-        --color-primary: #0f172a;
+        --color-primary: rgba(13, 10, 64, 1);
         --color-secondary: #1e293b;
-        --color-body: #334155;
+        --color-body: #444266;
         --color-muted: #475569;
         --color-subtle: #64748b;
         --color-lighter: #94a3b8;
         --color-border: #e2e8f0;
-        --color-bg-light: #f1f5f9;
+        --color-bg-light: #ffffff;
         --color-bg-lighter: #ffffff;
         --color-surface: #ffffff;
         --color-accent: #5f46ff;
@@ -59,7 +59,7 @@
         --radius-lg: 32px;
         --shadow-subtle: 0 4px 20px -5px rgba(15, 23, 42, 0.05);
         --shadow-elite: 0 30px 60px -12px rgba(15, 23, 42, 0.12);
-        --transition: 0s;
+        --transition: none;
         --glass-bg: #fff;
         --glass-border: #e2e8f0;
 
@@ -89,7 +89,7 @@
         font-size: var(--font-size-base);
         line-height: 1.65;
         letter-spacing: -0.011em;
-        background: #f8fafc;
+        background: #ffffff;
         color: var(--color-body);
         font-weight: 400;
         -webkit-font-smoothing: antialiased;
@@ -119,11 +119,24 @@
         font-weight: 400;
       }
 
+      /* Global stability: Remove all animations and hover effects */
+      * {
+        transition: none !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+      }
+
+      *:hover {
+        transform: none !important;
+        transition: none !important;
+      }
+
       h1, h1 * {
         font-family: var(--font-heading) !important;
         letter-spacing: -0.03em;
         font-weight: 500 !important;
         line-height: 1.15;
+        color: rgba(13, 10, 64, 1) !important;
       }
 
       h2, h3, h4, h5, h6,
@@ -132,6 +145,7 @@
         letter-spacing: -0.03em;
         font-weight: 500 !important;
         line-height: 1.15;
+        color: rgba(13, 10, 64, 1) !important;
       }
       body::after {
         content: "";
@@ -149,10 +163,9 @@
         left: 0;
         height: 3px;
         width: 0%;
-        background: linear-gradient(to right, var(--color-accent), #60a5fa);
+        background: linear-gradient(to right, #4039a7, #7974c2);
         z-index: 9999;
-        transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 0 10px rgba(64, 57, 167, 0.3);
         pointer-events: none;
       }
 
@@ -165,7 +178,7 @@
         z-index: 1000;
         background: transparent;
         border: none;
-        transition: var(--transition);
+        transition: none;
         padding: 0;
       }
       .site-nav.scrolled {
@@ -238,7 +251,7 @@
       /* Premium Mesh Hero */
       .hero {
         padding: 140px 0 48px;
-        background: white;
+        background: rgba(246, 245, 254, 1);
         position: relative;
         /* Removed overflow: hidden to allow dropdowns */
         border-bottom: 1px solid var(--color-border);
@@ -263,12 +276,19 @@
           radial-gradient(circle at 40% 80%, #f8fafc 0%, transparent 40%),
           radial-gradient(circle at 70% 70%, #f0f9ff 0%, transparent 40%);
         filter: blur(80px);
-        animation: meshFloat 25s ease-in-out infinite alternate;
       }
-      @keyframes meshFloat {
-        0% { transform: translate(0, 0) rotate(0deg); }
-        50% { transform: translate(5%, 2%) rotate(2deg); }
-        100% { transform: translate(-2%, 5%) rotate(-1deg); }
+      .site-nav-accent {
+        position: absolute;
+        top: -250px;
+        right: -250px;
+        width: 800px;
+        height: 800px;
+        background: linear-gradient(180deg, rgba(226, 228, 249, 0.7) 0%, rgba(66, 83, 231, 0.7) 100%);
+        filter: blur(140px);
+        opacity: 0.5;
+        z-index: 0;
+        pointer-events: none;
+        border-radius: 50%;
       }
       .hero > .container {
         position: relative;
@@ -403,7 +423,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.2s ease;
+        transition: none;
         border-radius: 4px;
       }
       .author-share-trigger:hover {
@@ -429,7 +449,7 @@
         z-index: 1000;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: none;
         border: 1px solid rgba(0,0,0,0.05);
       }
       .author-share-menu.show {
@@ -446,7 +466,7 @@
         color: #64748b;
         text-decoration: none;
         border-radius: 8px;
-        transition: all 0.2s ease;
+        transition: none;
       }
       .author-dropdown-item svg {
         width: 18px;
@@ -456,10 +476,9 @@
       .author-dropdown-item:hover {
         background: #f1f5f9;
         color: var(--color-primary);
-        transform: translateY(-1px);
       }
       #reading-time-meta {
-        transition: opacity 0.3s ease;
+        transition: none;
       }
 
       /* Hero visual */
@@ -576,14 +595,13 @@
       }
       .share-icon-link {
         color: var(--color-muted);
-        transition: all 0.3s ease;
+        transition: none;
         display: flex;
         align-items: center;
         justify-content: center;
       }
       .share-icon-link:hover {
         color: var(--color-primary);
-        transform: translateY(-2px);
       }
       .share-icon-link svg {
         width: 22px;
@@ -686,7 +704,7 @@
         background-repeat: no-repeat;
         background-size: 0% 2px;
         background-position: 0% 100%;
-        transition: background-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: none;
         font-weight: 500;
       }
       .rich-text a:hover {
@@ -882,7 +900,7 @@
         align-items: center;
         justify-content: center;
         color: #5f46ff;
-        transition: all 0.2s ease;
+        transition: none;
       }
       .rt-cta-box.is-open .rt-cta-trigger {
         background: #5f46ff;
@@ -890,7 +908,7 @@
         border-color: #5f46ff;
       }
       .rt-cta-trigger svg {
-        transition: transform 0.2s ease;
+        transition: none;
       }
       .rt-cta-box.is-open .rt-cta-trigger svg {
         transform: rotate(180deg);
@@ -907,7 +925,6 @@
         margin-top: 16px;
         padding-top: 16px;
         border-top: 1px solid #f1f5f9;
-        transition: opacity 0.3s ease;
       }
       .rt-cta-description {
         font-size: 15px;
@@ -926,7 +943,7 @@
         font-size: 15px !important;
         font-weight: 500 !important;
         border: none !important;
-        transition: background 0.2s ease !important;
+        transition: none !important;
       }
       .rt-cta-button:hover {
         background: #1d4ed8 !important;
@@ -1093,7 +1110,7 @@
       .keytakeaways_component {
         display: flex !important;
         flex-direction: column;
-        background: #ffffff;
+        background: #f5f5f5;
         border-radius: 16px;
         padding: 40px;
         margin-bottom: 64px;
@@ -1171,11 +1188,10 @@
         padding: 12px 24px;
         font-weight: 500;
         cursor: pointer;
-        transition: var(--transition);
+        transition: none;
       }
       .newsletter-form-button-2:hover {
         background: var(--color-bg-light);
-        transform: translateY(-2px);
       }
 
       /* Mapping for Webflow classes to existing rich-text styles */
@@ -1475,8 +1491,6 @@
       }
       .sidebar-newsletter .newsletter-form button:hover {
         background: var(--color-accent);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-subtle);
       }
       .newsletter-disclaimer {
         font-size: 11px;
@@ -1603,7 +1617,6 @@
         z-index: 2;
       }
       .share-trigger-fab:hover {
-        transform: scale(1.05);
         background: var(--color-accent);
       }
       .share-trigger-fab span {
@@ -1651,7 +1664,6 @@
       .share-btn-round:hover {
         background: white;
         color: var(--color-accent);
-        transform: scale(1.1);
       }
       .share-btn-round svg {
         width: 18px;
@@ -1709,7 +1721,6 @@
         visibility: visible;
       }
       .back-to-top:hover {
-        transform: translateY(-4px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       }
       .toc-mobile-overlay {
@@ -2492,13 +2503,13 @@
 
 
     <header class="hero">
+      <div class="site-nav-accent"></div>
       <div class="hero-bg"></div>
       <div class="container">
         <div class="hero-inner">
           <div>
             <nav
-              class="breadcrumb animate-reveal"
-              style="animation-delay: 0s"
+              class="breadcrumb"
               aria-label="Breadcrumb"
             >
               <a href="#">Home</a><span style="color: #cbd5e1">›</span>
@@ -2506,10 +2517,10 @@
               <span>ESOP Advisory</span>
             </nav>
 
-            <h1 class="animate-reveal" style="animation-delay: 0.2s">
+            <h1>
               Introducing ESOP Advisory - A Fully Integrated, Hands-On Equity Planning Service
             </h1>
-            <p class="hero-desc animate-reveal" style="animation-delay: 0.3s">
+            <p class="hero-desc">
               A deep dive into how fintech infrastructure is enabling
               non-financial brands to offer seamless banking, lending, and
               payment experiences — and what it means for the industry.
